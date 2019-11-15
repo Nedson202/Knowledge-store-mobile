@@ -1,17 +1,16 @@
 import React from 'react';
-import {
-  createStackNavigator, createBottomTabNavigator,
-  createAppContainer
-} from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createAppContainer } from 'react-navigation';
 
 import Main from './Main';
-import Icon from '../components/common/Icon';
 import BookDetails from '../components/Books/BookDetails';
+import Icon from '../components/common/Icon';
 
-import Search from '../screens/Search';
 import Login from '../screens/Auth/Login';
 import Signup from '../screens/Auth/Signup';
 import ProfileTab from '../screens/Profile';
+import Search from '../screens/Search';
 import SearchResult from '../screens/Search/SearchResult';
 import UserSettings from '../screens/UserSettings';
 import ResetPassword from '../screens/Auth/ResetPassword';
@@ -19,8 +18,8 @@ import VerifyOTP from '../screens/Auth/Verification';
 import ForgotPassword from '../screens/Auth/ForgotPassword';
 
 import {
-  INITIAL_ROUTE_NAME, TAB_BAR_ROUTES, INACTIVE_TINT_COLOR, DETAILS_ROUTE,
-  ICON_30, BLACK_2
+  BLACK_2, DETAILS_ROUTE, ICON_30, INACTIVE_TINT_COLOR,
+  INITIAL_ROUTE_NAME, TAB_BAR_ROUTES
 } from '../settings';
 
 const hideTabBar = (navigation, view) => {

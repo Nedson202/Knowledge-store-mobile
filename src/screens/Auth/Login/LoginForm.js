@@ -4,15 +4,15 @@ import { View } from 'react-native';
 
 import { formStyle } from '../../../styles';
 import {
-  LOGIN_TITLE, PASSWORD_LABEL, OUTLINE_TYPE, USERNAME_LABEL, NEXT_TYPE,
-  NONE, USERNAME_TYPE, PASSWORD_TYPE,
+  LOGIN_TITLE, NEXT_TYPE, NONE, OUTLINE_TYPE, PASSWORD_LABEL,
+  PASSWORD_TYPE, USERNAME_LABEL, USERNAME_TYPE,
 } from '../../../settings';
 
 const LoginForm = (props) => {
   const {
     textChangeHandler,
     formErrors: { username: usernameError, password: passwordError },
-    handleFormSubmit, loading,
+    handleFormSubmit, loading, handleBlur
   } = props;
 
   const passwordRef = useRef(null);
@@ -35,6 +35,7 @@ const LoginForm = (props) => {
             name: USERNAME_TYPE,
             value: username
           })}
+          onBlur={() => handleBlur(USERNAME_TYPE)}
           returnKeyType={NEXT_TYPE}
           style={{ marginBottom: 15, }}
         />
@@ -51,6 +52,7 @@ const LoginForm = (props) => {
             name: PASSWORD_TYPE,
             value: password
           })}
+          onBlur={() => handleBlur(PASSWORD_TYPE)}
           ref={passwordRef}
           secureTextEntry
         />

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, ScrollView, } from 'react-native';
-import { SafeAreaView, NavigationEvents } from 'react-navigation';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, ScrollView, View } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 
 import Browse from './Browse';
 import SearchHistory from './SearchHistory';
@@ -8,14 +8,14 @@ import SearchInput from './SearchInput';
 
 import useDebounce from '../../components/CustomHooks/useDebounce';
 
-import { searchStyle, appRootStyle } from '../../styles';
-import { getGenres, bookFilter, clientHandler } from '../../graphql';
+import { appRootStyle, searchStyle } from '../../styles';
+import { bookFilter, clientHandler, getGenres } from '../../graphql';
 
-import { SEARCH_RESULT_ROUTE, SEARCH_DEBOUNCE_TIME, } from '../../settings';
+import { SEARCH_DEBOUNCE_TIME, SEARCH_RESULT_ROUTE, } from '../../settings';
 import NavigationService from '../../navigation';
 import {
-  createSearchHistory, retrieveSearchHistory,
-  clearSearchHistory
+  clearSearchHistory, createSearchHistory,
+  retrieveSearchHistory
 } from '../../utils';
 
 const Search = () => {
@@ -92,8 +92,8 @@ const Search = () => {
     };
   };
 
-  const handleSearch = () => {
-    setSearchText(searchText);
+  const handleSearch = (query) => {
+    setSearchText(query);
   };
 
   const queryBookFilter = async (queryValue) => {
