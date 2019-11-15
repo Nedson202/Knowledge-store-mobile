@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 import uuid from 'uuid/v1';
 
-import { firebaseConfig, firebaseFolderName } from '../../../config';
+import { firebaseConfig, firebaseFolderName } from '../../config';
 
 const imageUploader = async (file) => {
   try {

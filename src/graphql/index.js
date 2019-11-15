@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from '../redux/reducers/rootReducer';
-import { REACT_APP_NODE_ENV, REACT_APP_PROD_SERVER } from '../../../config';
+import { REACT_APP_NODE_ENV, REACT_APP_PROD_SERVER } from '../../config';
 import { getTokenFromStorage, } from '../utils';
 
 const enhancer = composeWithDevTools(applyMiddleware(thunk));

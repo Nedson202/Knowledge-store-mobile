@@ -20,8 +20,8 @@ const InitSetupProvider = ({ children }) => {
 
   const initFontAndUserAuth = async () => {
     await Font.loadAsync({
-      'Georgia': require('../../../../assets/fonts/georgia/georgia.ttf'),
-      'Georgia Bold': require('../../../../assets/fonts/georgia/georgiab.ttf'),
+      'Georgia': require('../../../assets/fonts/georgia/georgia.ttf'),
+      'Georgia Bold': require('../../../assets/fonts/georgia/georgiab.ttf'),
       ...Ionicons.font,
     });
 

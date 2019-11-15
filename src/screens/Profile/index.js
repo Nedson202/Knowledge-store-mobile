@@ -24,7 +24,7 @@ import AuthSelect from '../Auth/AuthSelect';
 import NavigationService from '../../base/NavigationService';
 import { getTokenFromStorage, setTokenToStorage } from '../../utils';
 
-import { ENVIRONMENT, REACT_APP_NODE_ENV } from '../../../../config';
+import { ENVIRONMENT, REACT_APP_NODE_ENV } from '../../../config';
 
 import { setCurrentUser } from '../../redux/actions/userActions';
 import { clientHandler, decodeToken } from '../../graphql';

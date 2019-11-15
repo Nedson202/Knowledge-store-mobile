@@ -2,22 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
-import InitSetupProvider from './src/app/contexts/providers/InitSetupProvider';
-import Navigator from './src/app/base/Navigator';
-import { appRootStyle } from './src/app/styles';
-import { store } from './src/app/graphql';
-import Spinner from './src/app/components/common/Spinner';
-import NavigationService from './src/app/base/NavigationService';
-import useApolloClient from './src/app/components/CustomHooks/useApolloClient';
+import InitSetupProvider from './src/contexts/providers/InitSetupProvider';
+import Navigator from './src/base/Navigator';
+import { appRootStyle } from './src/styles';
+import { store, clientHandler } from './src/graphql';
+import Spinner from './src/components/common/Spinner';
+import NavigationService from './src/base/NavigationService';
 
 const App = () => {
+  const [client, setClient] = useState({});
   const [retrievingToken, setRetrievingToken] = useState(true);
-  const client = useApolloClient();
 
   const getClient = async () => {
-    if (client) {
-      setRetrievingToken(false);
-    }
+    const customClient = await clientHandler();
+
+    setClient(customClient);
+    setRetrievingToken(false);
   };
 
   useEffect(() => {
