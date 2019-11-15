@@ -14,7 +14,7 @@ const bookStyles = StyleSheet.create({
   },
   bookListImage: {
     height: 200,
-    borderRadius: 15,
+    borderRadius: 5,
     width: '100%',
   },
   browseListItemTitle: {

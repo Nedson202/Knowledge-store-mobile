@@ -13,9 +13,6 @@ import okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
-import com.RNFetchBlob.RNFetchBlobPackage;
-import com.RNFetchBlob.RNFetchBlobPackage;
-import com.imagepicker.ImagePickerPackage;
 
 public class MainApplication extends ExpoApplication implements AppLoaderPackagesProviderInterface<ReactPackage> {
 
@@ -31,10 +28,7 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
         // TODO: add native modules!
 
         // Needed for `react-native link`
-        // new MainReactPackage(),
-            new RNFetchBlobPackage(),
-            new RNFetchBlobPackage(),
-            new ImagePickerPackage()
+        // new MainReactPackage()
     );
   }
 
