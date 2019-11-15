@@ -7,7 +7,7 @@ import Navigator from './src/base/Navigator';
 import { appRootStyle } from './src/styles';
 import { store, clientHandler } from './src/graphql';
 import Spinner from './src/components/common/Spinner';
-import NavigationService from './src/base/NavigationService';
+import NavigationService from './src/navigation';
 
 const App = () => {
   const [client, setClient] = useState({});

@@ -6,7 +6,7 @@ import SocialAuth from './SocialAuth';
 import { formStyle } from '../../styles';
 import CustomText from '../../components/common/CustomText';
 import { LOGIN_ROUTE } from '../../settings';
-import NavigationService from '../../base/NavigationService';
+import NavigationService from '../../navigation';
 
 const AuthSelect = ({ triggerSocialAuth }) => {
   const navigateToAuthScreen = (type) => {

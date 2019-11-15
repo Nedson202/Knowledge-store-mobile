@@ -12,7 +12,7 @@ import { searchStyle, appRootStyle } from '../../styles';
 import { getGenres, bookFilter, clientHandler } from '../../graphql';
 
 import { SEARCH_RESULT_ROUTE, SEARCH_DEBOUNCE_TIME, } from '../../settings';
-import NavigationService from '../../base/NavigationService';
+import NavigationService from '../../navigation';
 import {
   createSearchHistory, retrieveSearchHistory,
   clearSearchHistory

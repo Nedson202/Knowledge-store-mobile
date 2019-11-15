@@ -7,7 +7,7 @@ import debounce from 'lodash.debounce';
 
 import LoginForm from './LoginForm';
 import HeaderTitle from '../../../components/common/HeaderTitle';
-import NavigationService from '../../../base/NavigationService';
+import NavigationService from '../../../navigation';
 import { clientHandler, loginUser } from '../../../graphql';
 import { formStyle } from '../../../styles';
 

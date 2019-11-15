@@ -14,7 +14,7 @@ import {
   handleSingleFieldValidation, allFieldsValidation
 } from '../../../utils';
 import { forgotPassword, clientHandler } from '../../../graphql';
-import NavigationService from '../../../base/NavigationService';
+import NavigationService from '../../../navigation';
 
 const ForgotPassword = () => {
   const defaultValues = {

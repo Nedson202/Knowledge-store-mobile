@@ -21,7 +21,7 @@ import {
 } from '../../settings';
 import AuthSelect from '../Auth/AuthSelect';
 
-import NavigationService from '../../base/NavigationService';
+import NavigationService from '../../navigation';
 import { getTokenFromStorage, setTokenToStorage } from '../../utils';
 
 import { ENVIRONMENT, REACT_APP_NODE_ENV } from '../../../config';

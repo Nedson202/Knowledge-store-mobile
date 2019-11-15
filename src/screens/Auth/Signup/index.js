@@ -16,7 +16,7 @@ import {
 } from '../../../utils';
 import { addUser, clientHandler } from '../../../graphql';
 
-import NavigationService from '../../../base/NavigationService';
+import NavigationService from '../../../navigation';
 import { setCurrentUser } from '../../../redux/actions/userActions';
 
 

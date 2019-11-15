@@ -7,7 +7,7 @@ import { appRootStyle } from '../../styles';
 import { DETAILS_ROUTE, STRETCH } from '../../settings';
 import Spinner from '../common/Spinner';
 import CustomText from '../common/CustomText';
-import NavigationService from '../../base/NavigationService';
+import NavigationService from '../../navigation';
 import { toHTTPS } from '../../utils';
 
 const BookList = (props) => {

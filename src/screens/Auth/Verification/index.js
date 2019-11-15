@@ -17,7 +17,7 @@ import {
 } from '../../../graphql';
 import { setTokenToStorage } from '../../../utils';
 import { setCurrentUser } from '../../../redux/actions/userActions';
-import NavigationService from '../../../base/NavigationService';
+import NavigationService from '../../../navigation';
 
 
 const VerifyOTP = ({ navigation }) => {
