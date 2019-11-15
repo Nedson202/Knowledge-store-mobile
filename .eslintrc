@@ -1,0 +1,75 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "node": true,
+    "browser": true,
+    "jest": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "rules": {
+    "no-use-before-define": "off",
+    "react/jsx-filename-extension": "off",
+    "react/prop-types": "off",
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "one-var": 0,
+    "one-var-declaration-per-line": 0,
+    "new-cap": 0,
+    "consistent-return": 0,
+    "no-param-reassign": 0,
+    "no-absolute-path": 0,
+    "no-trailing-spaces": 1,
+    "comma-dangle": 0,
+    "curly": [
+      "error",
+      "multi-line"
+    ],
+    "newline-per-chained-call": 0,
+    "class-methods-use-this": 0,
+    "import/no-unresolved": 0,
+    "no-shadow": [
+      "error",
+      {
+        "allow": [
+          "req",
+          "res",
+          "err"
+        ]
+      }
+    ],
+    "react/prefer-stateless-function": 0,
+    "react/forbid-prop-types": 0,
+    "eol-last": 0,
+    "semi": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "external",
+          "index",
+          "sibling",
+          "parent",
+          "internal",
+          "builtin"
+        ]
+      }
+    ],
+    "import/no-duplicates": "error"
+  },
+  "globals": {
+    "fetch": false
+  }
+}

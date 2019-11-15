@@ -1,0 +1,10 @@
+export const WHITE_1 = '#ffffff';
+export const BLACK_1 = '#000000';
+export const BLACK_2 = 'rgba(0,0,0,.9)';
+export const BLACK_3 = '#2b2b2b';
+export const BLACK_4 = '#575656';
+export const BLACK_5 = 'rgba(0, 0, 0, .4)';
+export const YELLOW_1 = '#3498db';
+export const YELLOW_2 = '#ffaa00';
+export const GREY_1 = '#cfcfd0';
+export const GREY_2 = '#e8e8e8';

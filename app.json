@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "Lorester bookstore mobile",
+    "slug": "RNE",
+    "privacy": "public",
+    "sdkVersion": "33.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "Lorester-Bookstore",
+      "publishBundlePath": "ios/the-knowledge-store-mobile/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/the-knowledge-store-mobile/Supporting/shell-app-manifest.json"
+    },
+    "android": {
+      "package": "com.loresterbookstore.kstore",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+    },
+    "isDetached": false,
+    "scheme": "exp20db5f5bbdb6436ebac1b8b3797e5627"
+  }
+}
