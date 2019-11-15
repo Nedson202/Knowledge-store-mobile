@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Dimensions, Platform } from 'react-native';
-import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import { SafeAreaView, NavigationEvents } from 'react-navigation';
+import { Dimensions, Platform, SafeAreaView, View } from 'react-native';
+import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
+import { NavigationEvents } from 'react-navigation';
 import { AuthSession } from 'expo';
 import { useDispatch } from 'react-redux';
 
@@ -16,8 +16,8 @@ import UserAvatarLoader from '../../components/ContentLoaders/UserAvatarLoader';
 
 import { profileStyles, searchStyle } from '../../styles';
 import {
-  PROFILE_TAB_ROUTES, GEORGIA_BOLD, INACTIVE_TINT_COLOR, VERIFY_OTP_ROUTE,
-  PRODUCTION, BLACK_1
+  BLACK_1, GEORGIA_BOLD, INACTIVE_TINT_COLOR, PRODUCTION,
+  PROFILE_TAB_ROUTES, VERIFY_OTP_ROUTE
 } from '../../settings';
 import AuthSelect from '../Auth/AuthSelect';
 
@@ -82,14 +82,14 @@ const ProfileTab = () => {
     let redirectUrl = AuthSession.getRedirectUrl();
 
     let result = await AuthSession.startAsync({
-      authUrl: `${fullRedirectUrl}?redirect_url=${redirectUrl}`
+      authUrl: `${fullRedirectUrl}?redirect_uri=${redirectUrl}`
     });
 
     completeSocialAuth(result);
   };
 
   const completeSocialAuth = async (sessionResult) => {
-    const { params: { token } } = sessionResult;
+    const { params: { token = '' } = {} } = sessionResult;
 
     if (!token) {
       return;

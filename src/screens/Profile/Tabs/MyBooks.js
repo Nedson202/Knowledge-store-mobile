@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, View } from 'react-native';
 
 import { appRootStyle } from '../../../styles';
 import BookList from '../../../components/Books';
-import { fetchUsersBooks, clientHandler } from '../../../graphql';
+import { clientHandler, fetchUsersBooks } from '../../../graphql';
 import CustomText from '../../../components/common/CustomText';
 import { getTokenFromStorage } from '../../../utils';
 

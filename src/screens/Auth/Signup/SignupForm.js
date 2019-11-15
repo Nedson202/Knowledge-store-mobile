@@ -4,14 +4,13 @@ import { View, } from 'react-native';
 
 import { formStyle } from '../../../styles';
 import {
-  SIGNUP_TITLE, USERNAME_LABEL,
-  EMAIL_LABEL, PASSWORD_LABEL, OUTLINE_TYPE, NEXT_TYPE, PASSWORD_TYPE,
-  NONE, USERNAME_TYPE, EMAIL_TYPE,
+  EMAIL_LABEL, EMAIL_TYPE, NONE, OUTLINE_TYPE, PASSWORD_LABEL, PASSWORD_TYPE,
+  SIGNUP_TITLE, USERNAME_LABEL, USERNAME_TYPE,
 } from '../../../settings';
 
 const SignupForm = (props) => {
   const {
-    textChangeHandler, handleFormSubmit, loading,
+    textChangeHandler, handleFormSubmit, loading, handleBlur,
     formErrors: {
       username: usernameError,
       email: emailError,
@@ -30,7 +29,6 @@ const SignupForm = (props) => {
           label={USERNAME_LABEL}
           labelStyle={formStyle.formLabel}
           inputStyle={formStyle.formInputStyle}
-          returnKeyType={NEXT_TYPE}
           autoFocus={true}
           errorMessage={usernameError && usernameError[0]}
           errorStyle={formStyle.errorStyle}
@@ -41,6 +39,7 @@ const SignupForm = (props) => {
             name: USERNAME_TYPE,
             value: username
           })}
+          onBlur={() => handleBlur(USERNAME_TYPE)}
         />
       </View>
       <View style={{ marginBottom: 20 }}>
@@ -59,6 +58,7 @@ const SignupForm = (props) => {
             name: EMAIL_TYPE,
             value: email
           })}
+          onBlur={() => handleBlur(EMAIL_TYPE)}
         />
       </View>
       <View style={{ marginBottom: 20 }}>
@@ -74,6 +74,7 @@ const SignupForm = (props) => {
             name: PASSWORD_TYPE,
             value: password
           })}
+          onBlur={() => handleBlur(PASSWORD_TYPE)}
           secureTextEntry
         />
       </View>

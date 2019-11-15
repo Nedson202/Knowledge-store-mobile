@@ -60,10 +60,10 @@
         "groups": [
           "external",
           "index",
+          "builtin",
           "sibling",
           "parent",
-          "internal",
-          "builtin"
+          "internal"
         ]
       }
     ],

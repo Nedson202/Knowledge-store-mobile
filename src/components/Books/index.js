@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Image, CheckBox, } from 'react-native-elements';
-import { View, TouchableWithoutFeedback } from 'react-native';
+import { CheckBox, Image, } from 'react-native-elements';
+import { TouchableWithoutFeedback, View } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
 
 import { appRootStyle } from '../../styles';

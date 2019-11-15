@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'react-native-elements';
-import { View, KeyboardAvoidingView } from 'react-native';
-import debounce from 'lodash.debounce';
+import { KeyboardAvoidingView, View } from 'react-native';
 
 import { formStyle } from '../../../styles';
 import HeaderTitle from '../../../components/common/HeaderTitle';
 import CustomText from '../../../components/common/CustomText';
 import {
-  FORGOT_PASSWORD_TITLE, EMAIL_LABEL, OUTLINE_TYPE, PADDING,
-  VALIDATION_DEBOUNCE_TIME, VERIFY_OTP_ROUTE, NONE, RESET_OTP_TITLE, EMAIL_TYPE
+  EMAIL_LABEL, EMAIL_TYPE, FORGOT_PASSWORD_TITLE, NONE,
+  OUTLINE_TYPE, PADDING, RESET_OTP_TITLE, VERIFY_OTP_ROUTE
 } from '../../../settings';
 import {
-  handleSingleFieldValidation, allFieldsValidation
+  allFieldsValidation, handleSingleFieldValidation
 } from '../../../utils';
-import { forgotPassword, clientHandler } from '../../../graphql';
+import { clientHandler, forgotPassword } from '../../../graphql';
 import NavigationService from '../../../navigation';
 
 const ForgotPassword = () => {
@@ -24,22 +23,20 @@ const ForgotPassword = () => {
   const [formErrors, setFormErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const debounceSingleFieldValidation = debounce(({ name, value }) => {
-    const { formErrors: newFormErrors } = handleSingleFieldValidation(
-      formErrors, { name, value }
-    );
+  const onTextChange = ({ name, value }) => {
     const newValues = { ...values };
 
     newValues[name] = value.trim();
     setValues(newValues);
-
-    setFormErrors(newFormErrors);
-  }, VALIDATION_DEBOUNCE_TIME);
-
-  const onTextChange = ({ name, value }) => {
-    debounceSingleFieldValidation({ name, value });
   };
 
+  const handleBlur = (name) => {
+    const { formErrors: newFormErrors } = handleSingleFieldValidation(
+      formErrors, { name, value: values[name] }
+    );
+
+    setFormErrors(newFormErrors);
+  };
   const handleFormSubmit = async () => {
     setLoading(true);
     const client = await clientHandler();
@@ -99,6 +96,7 @@ const ForgotPassword = () => {
               name: EMAIL_TYPE,
               value: email
             })}
+            handleBlur={() => handleBlur(EMAIL_TYPE)}
             errorMessage={emailError && emailError[0]}
             errorStyle={formStyle.errorStyle}
           />

@@ -1,34 +1,30 @@
 /* eslint-disable no-undef */
 import React, { useEffect, useState, } from 'react';
-import { View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import Constants from 'expo-constants';
-import * as Permissions from 'expo-permissions';
-import * as ImagePicker from 'expo-image-picker';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, View } from 'react-native';
 import { Button } from 'react-native-elements';
+import Constants from 'expo-constants';
 import debounce from 'lodash.debounce';
+import { useDispatch } from 'react-redux';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
 
 import EditProfileForm from './EditProfileForm';
-import { profileStyles } from '../../../styles';
-import {
-  VALIDATION_DEBOUNCE_TIME, CLEAR_TYPE, OUTLINE_TYPE, CANCEL_TITLE,
-  REMOVE_TITLE, PERMISSION_DENIED, PERMISSION_GRANTED, BLACK_4
-} from '../../../settings';
-import {
-  handleSingleFieldValidation, allFieldsValidation, setTokenToStorage,
-  getTokenFromStorage, imageUploader
-} from '../../../utils';
-import { setCurrentUser } from '../../../redux/actions/userActions';
-
-import { editProfile, removeProfilePicture, clientHandler } from '../../../graphql';
-import UserImageUpload from '../../../components/ImageUpload/UserImageUpload';
 import AppModal from '../../../components/Modal';
 import CustomText from '../../../components/common/CustomText';
-
-
-
+import UserImageUpload from '../../../components/ImageUpload/UserImageUpload';
 import useAuthSelector from '../../../components/CustomHooks/useAuthSelector';
+
+import { clientHandler, editProfile, removeProfilePicture } from '../../../graphql';
+import { profileStyles } from '../../../styles';
+import { setCurrentUser } from '../../../redux/actions/userActions';
+import {
+  BLACK_4, CANCEL_TITLE, CLEAR_TYPE, OUTLINE_TYPE,
+  PERMISSION_DENIED, PERMISSION_GRANTED, REMOVE_TITLE, VALIDATION_DEBOUNCE_TIME
+} from '../../../settings';
+import {
+  allFieldsValidation, getTokenFromStorage, handleSingleFieldValidation,
+  imageUploader, setTokenToStorage
+} from '../../../utils';
 
 const EditProfile = () => {
   const dispatch = useDispatch();

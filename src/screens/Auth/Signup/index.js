@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { KeyboardAvoidingView } from 'react-native';
 import { useDispatch } from 'react-redux';
-import debounce from 'lodash.debounce';
 
 import SignupForm from './SignupForm';
 import { formStyle } from '../../../styles';
 import HeaderTitle from '../../../components/common/HeaderTitle';
 import {
-  SIGNUP_TITLE, PADDING, VALIDATION_DEBOUNCE_TIME, VERIFY_OTP_ROUTE,
+  PADDING, SIGNUP_TITLE, VERIFY_OTP_ROUTE,
 } from '../../../settings';
 import CustomText from '../../../components/common/CustomText';
 import {
@@ -18,7 +17,6 @@ import { addUser, clientHandler } from '../../../graphql';
 
 import NavigationService from '../../../navigation';
 import { setCurrentUser } from '../../../redux/actions/userActions';
-
 
 const Signup = () => {
   const defaultValues = {
@@ -31,25 +29,24 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const debounceSingleFieldValidation = debounce(({ name, value }) => {
-    const { formErrors: newFormErrors } = handleSingleFieldValidation(
-      formErrors, { name, value }
-    );
+  const onTextChange = ({ name, value }) => {
     const newValues = { ...values };
 
     newValues[name] = value.trim();
     setValues(newValues);
+  };
+
+  const handleBlur = (name) => {
+    const { formErrors: newFormErrors } = handleSingleFieldValidation(
+      formErrors, { name, value: values[name] }
+    );
 
     setFormErrors({ ...formErrors, ...newFormErrors });
-  }, VALIDATION_DEBOUNCE_TIME);
-
-  const onTextChange = ({ name, value }) => {
-    debounceSingleFieldValidation({ name, value });
   };
 
   const handleFormSubmit = async () => {
     setLoading(true);
-    const { isValid, errors } = allFieldsValidation(values, ['username', 'email']);
+    const { isValid, errors } = allFieldsValidation(values);
 
     if (!isValid) {
       setFormErrors(errors);
@@ -103,6 +100,7 @@ const Signup = () => {
         handleFormSubmit={handleFormSubmit}
         formErrors={formErrors}
         loading={loading}
+        handleBlur={handleBlur}
       />
     </KeyboardAvoidingView>
   );

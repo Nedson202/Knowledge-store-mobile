@@ -3,7 +3,6 @@ import { KeyboardAvoidingView, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { NavigationEvents } from 'react-navigation';
 import { useDispatch } from 'react-redux';
-import debounce from 'lodash.debounce';
 
 import LoginForm from './LoginForm';
 import HeaderTitle from '../../../components/common/HeaderTitle';
@@ -13,14 +12,13 @@ import { formStyle } from '../../../styles';
 
 import { setCurrentUser } from '../../../redux/actions/userActions';
 import {
-  setTokenToStorage,
-  allFieldsValidation, handleSingleFieldValidation
+  allFieldsValidation,
+  handleSingleFieldValidation, setTokenToStorage
 } from '../../../utils';
 import useAuthSelector from '../../../components/CustomHooks/useAuthSelector';
 import {
   CLEAR_TYPE, FORGOT_PASSWORD_ROUTE, FORGOT_PASSWORD_TITLE, LOGIN_TITLE,
   PADDING, SIGNUP_ROUTE, SIGNUP_TITLE, USER_DASHBOARD_ROUTE,
-  VALIDATION_DEBOUNCE_TIME,
 } from '../../../settings';
 
 const Login = () => {
@@ -47,18 +45,6 @@ const Login = () => {
     setFormErrors({});
   };
 
-  const debounceSingleFieldValidation = debounce(({ name, value }) => {
-    const { formErrors: newFormErrors, } = handleSingleFieldValidation(
-      formErrors, { name, value }
-    );
-    const newValues = { ...values };
-
-    newValues[name] = value.trim();
-    setValues(newValues);
-
-    setFormErrors({ ...formErrors, ...newFormErrors });
-  }, VALIDATION_DEBOUNCE_TIME);
-
   const navigateTo = (location) => {
     return () => {
       NavigationService.navigate(location);
@@ -66,7 +52,18 @@ const Login = () => {
   };
 
   const onTextChange = ({ name, value }) => {
-    debounceSingleFieldValidation({ name, value });
+    const newValues = { ...values };
+
+    newValues[name] = value.trim();
+    setValues(newValues);
+  };
+
+  const handleBlur = (name) => {
+    const { formErrors: newFormErrors, } = handleSingleFieldValidation(
+      formErrors, { name, value: values[name] }
+    );
+
+    setFormErrors({ ...formErrors, ...newFormErrors });
   };
 
   const handleFormSubmit = async () => {
@@ -123,6 +120,7 @@ const Login = () => {
           handleFormSubmit={handleFormSubmit}
           formErrors={formErrors}
           loading={loading}
+          handleBlur={handleBlur}
         />
 
         <View style={formStyle.additionalHelp}>

@@ -1,14 +1,13 @@
 import React from 'react';
-import { Rating, Image } from 'react-native-elements';
-import { View } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { Image, Rating } from 'react-native-elements';
+import { TouchableWithoutFeedback, View } from 'react-native';
 
 import Spinner from '../common/Spinner';
 import CustomText from '../common/CustomText'
   ;
-import { YELLOW_1, YELLOW_2, COVER, ICON_SMALL } from '../../settings';
+import { COVER, ICON_SMALL, YELLOW_1, YELLOW_2 } from '../../settings';
 import reviewStyles from '../../styles/base/reviews/reviewStyles';
-import { toHTTPS, timeParser } from '../../utils';
+import { timeParser, toHTTPS } from '../../utils';
 
 const ReviewCard = (props) => {
   const {
